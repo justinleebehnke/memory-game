@@ -1,4 +1,6 @@
 # Memory Game
+Play the game [here](https://memory.justinbehnke.com)
+
 
 ## Project setup
 ```
