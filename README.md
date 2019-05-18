@@ -1,4 +1,4 @@
-# hello-vue
+# Memory Game
 
 ## Project setup
 ```
