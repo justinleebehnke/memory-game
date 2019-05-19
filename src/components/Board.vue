@@ -28,6 +28,18 @@ export default {
         }
     },
     methods: {
+        shuffle(array) {
+            let newArray = [...array]
+            let currentIndex = array.length, randomIndex, temporaryValue
+            while (0 !== currentIndex) {
+                randomIndex = Math.floor(Math.random() * currentIndex)
+                currentIndex -= 1
+                temporaryValue = newArray[currentIndex]
+                newArray[currentIndex] = newArray[randomIndex]
+                newArray[randomIndex] = temporaryValue
+            }
+            return newArray
+        },
         onClickCard(cardID) {
             this.totalClicks += 1
             let faceUpCards = []
@@ -138,6 +150,7 @@ export default {
             'fa fa-home',
             'fa fa-user-md'
         ]
+        icons = this.shuffle(icons)
         let cards = []
         let value = 0
         for (let i = 0; i < NUM_CARDS; i++) {
@@ -146,7 +159,7 @@ export default {
             }
             cards.push({id: i, value: value, isFaceUp: false, icon: icons[value]})
         }
-        this.cards = cards.sort(() => Math.random() - 0.5);
+        this.cards = this.shuffle(cards)
     }
 }
 </script>
