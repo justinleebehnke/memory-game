@@ -14,6 +14,8 @@
 </template>
 <script>
 import Card from '../components/Card.vue'
+let NUM_CARDS = 18
+
 export default {
     components: {
         Card
@@ -90,35 +92,88 @@ export default {
         }
     },
     created() {
-        let cards = [
-                {id: 1, value: 1, isFaceUp: false, icon: 'fas fa-user-astronaut'},
-                {id: 2, value: 1, isFaceUp: false, icon: 'fas fa-user-astronaut'},
-                {id: 3, value: 2, isFaceUp: false, icon: 'fa fa-bug'},
-                {id: 4, value: 2, isFaceUp: false, icon: 'fa fa-bug'},
-                {id: 5, value: 3, isFaceUp: false, icon: 'fa fa-paper-plane'},
-                {id: 6, value: 3, isFaceUp: false, icon: 'fa fa-paper-plane'},
-                {id: 7, value: 4, isFaceUp: false, icon: 'fa fa-paint-brush'},
-                {id: 8, value: 4, isFaceUp: false, icon: 'fa fa-paint-brush'},
-                {id: 9, value: 5, isFaceUp: false, icon: 'fa fa-umbrella'},
-                {id: 10, value: 5, isFaceUp: false, icon: 'fa fa-umbrella'},
-                {id: 11, value: 6, isFaceUp: false, icon: 'fa fa-bicycle'},
-                {id: 12, value: 6, isFaceUp: false, icon: 'fa fa-bicycle'}
-            ]
+        let icons = [
+            'fas fa-user-astronaut',
+            'fa fa-bug',
+            'fa fa-paper-plane',
+            'fa fa-paint-brush',
+            'fa fa-umbrella',
+            'fa fa-bicycle',
+            'fa fa-bath',
+            'fa fa-university',
+            'fa fa-bell',
+            'fa fa-book',
+            'fa fa-briefcase',
+            'fa fa-bullhorn',
+            'fa fa-camera-retro',
+            'fa fa-coffee',
+            'fa fa-envelope',
+            'fa fa-bolt',
+            'fa fa-gamepad',
+            'fa fa-gift',
+            'fa fa-graduation-cap',
+            'fa fa-truck',
+            'fa fa-space-shuttle',
+            'fa fa-plane',
+            'fa fa-magic',
+            'fa fa-hourglass',
+            'fa fa-flask',
+            'fa fa-flag-checkered',
+            'fa fa-car',
+            'fa fa-binoculars',
+            'fa fa-anchor',
+            'fa fa-balance-scale',
+            'fa fa-birthday-cake',
+            'fa fa-laptop',
+            'fa fa-microphone',
+            'fa fa-plug',
+            'fa fa-puzzle-piece',
+            'fa fa-star',
+            'fa fa-wrench',
+            'fa fa-trophy',
+            'fa fa-tree',
+            'fa fa-rocket',
+            'fa fa-leaf',
+            'fa fa-key',
+            'fa fa-home',
+            'fa fa-user-md'
+        ]
+        let cards = []
+        let value = 0
+        for (let i = 0; i < NUM_CARDS; i++) {
+            if (i % 2 === 0) {
+                value += 1
+            }
+            cards.push({id: i, value: value, isFaceUp: false, icon: icons[value]})
+        }
         this.cards = cards.sort(() => Math.random() - 0.5);
     }
 }
 </script>
 
 <style scoped>
+@media(min-width:150px) {
+    .cardContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media(min-width:550px) {
+    .cardContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+@media(min-width:800px) {
+    .cardContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+.cardContainer {
+    display: grid;
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+}
 .board {
     display: inline-block;
     padding: 0.5em;
-}
-.cardContainer {
-    max-width: 35em;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 1em;
-    grid-row-gap: 1em;
 }
 </style>
